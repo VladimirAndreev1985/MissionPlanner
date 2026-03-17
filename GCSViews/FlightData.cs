@@ -3694,9 +3694,16 @@ namespace MissionPlanner.GCSViews
 
                     // --- GPS spoofing detection & signal quality monitoring ---
                     // MONITORING ONLY — no commands sent to drone
+                    // Only active when connected to a vehicle with valid data
                     try
                     {
                         var _cs = MainV2.comPort.MAV.cs;
+
+                        if (!MainV2.comPort.BaseStream.IsOpen || !_cs.connected)
+                        {
+                            GPSMonitor.Reset();
+                            goto skipMonitors;
+                        }
 
                         // GPS spoofing check
                         bool gpsAlert = GPSMonitor.Update(
@@ -3752,6 +3759,8 @@ namespace MissionPlanner.GCSViews
                             VoiceAlerts.AlertBatteryCritical();
                             log.Warn("PointOfNoReturn: " + PointOfNoReturn.StatusText);
                         }
+
+                        skipMonitors:;
                     }
                     catch (Exception ex)
                     {
