@@ -746,6 +746,90 @@ namespace MissionPlanner
                 MainMenu.Items.Add(reportBtn);
             }
 
+            // Тактические команды — сброс груза
+            {
+                var payloadBtn = new System.Windows.Forms.ToolStripButton();
+                payloadBtn.Text = "Сброс груза";
+                payloadBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+                payloadBtn.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+                payloadBtn.ToolTipText = "Сброс груза — команда DO_SET_SERVO";
+                payloadBtn.Click += (s, ev) =>
+                {
+                    string channel = "9";
+                    if (MissionPlanner.Controls.InputBox.Show("Сброс груза", "Канал серво:", ref channel) == System.Windows.Forms.DialogResult.OK)
+                    {
+                        string pwm = "1100";
+                        if (MissionPlanner.Controls.InputBox.Show("Сброс груза", "Значение PWM:", ref pwm) == System.Windows.Forms.DialogResult.OK)
+                        {
+                            if (int.TryParse(channel, out int ch) && int.TryParse(pwm, out int pw))
+                                Utilities.TacticalCommands.PayloadRelease(ch, pw);
+                        }
+                    }
+                };
+                MainMenu.Items.Add(payloadBtn);
+            }
+
+            // Таймер координации
+            {
+                var timerBtn = new System.Windows.Forms.ToolStripButton();
+                timerBtn.Text = "Таймер";
+                timerBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+                timerBtn.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+                timerBtn.ToolTipText = "Таймер координации для синхронных действий";
+                timerBtn.Click += (s, ev) => Utilities.CoordinationTimer.ShowTimer();
+                MainMenu.Items.Add(timerBtn);
+            }
+
+            // АВАРИЙНАЯ ОСТАНОВКА МОТОРОВ — красная кнопка
+            {
+                var stopBtn = new System.Windows.Forms.ToolStripButton();
+                stopBtn.Text = "СТОП МОТОРЫ";
+                stopBtn.ForeColor = System.Drawing.Color.Red;
+                stopBtn.Font = new System.Drawing.Font(stopBtn.Font, System.Drawing.FontStyle.Bold);
+                stopBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+                stopBtn.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+                stopBtn.ToolTipText = "АВАРИЙНАЯ ОСТАНОВКА — немедленное выключение моторов (БПА упадёт!)";
+                stopBtn.Click += (s, ev) => Utilities.TacticalCommands.EmergencyMotorKill();
+                MainMenu.Items.Add(stopBtn);
+            }
+
+            // Ночной режим — красная тема для сохранения ночного зрения
+            {
+                var nightBtn = new System.Windows.Forms.ToolStripButton();
+                nightBtn.Text = "Ночной режим";
+                nightBtn.ForeColor = System.Drawing.Color.DarkRed;
+                nightBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+                nightBtn.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+                nightBtn.ToolTipText = "Ctrl+N — переключение ночного режима (красный свет)";
+                nightBtn.Click += (s, ev) => Utilities.NightMode.Toggle(this);
+                MainMenu.Items.Add(nightBtn);
+            }
+
+            // Скриншот карты
+            {
+                var screenshotBtn = new System.Windows.Forms.ToolStripButton();
+                screenshotBtn.Text = "Скриншот карты";
+                screenshotBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+                screenshotBtn.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+                screenshotBtn.ToolTipText = "PrintScreen — скриншот карты с наложением координат и телеметрии";
+                screenshotBtn.Click += (s, ev) =>
+                {
+                    Utilities.MapScreenshot.CaptureAndShow(GCSViews.FlightData.mymap);
+                };
+                MainMenu.Items.Add(screenshotBtn);
+            }
+
+            // Экспорт тактических меток
+            {
+                var exportTacticalBtn = new System.Windows.Forms.ToolStripButton();
+                exportTacticalBtn.Text = "Экспорт меток";
+                exportTacticalBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+                exportTacticalBtn.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+                exportTacticalBtn.ToolTipText = "Экспорт тактических меток во все форматы координат";
+                exportTacticalBtn.Click += (s, ev) => Utilities.TacticalMarkers.ExportAndShow();
+                MainMenu.Items.Add(exportTacticalBtn);
+            }
+
             // define default basestream
             comPort.BaseStream = new SerialPort();
             comPort.BaseStream.BaudRate = 57600;
@@ -4147,6 +4231,12 @@ namespace MissionPlanner
                 return true;
             }
 
+            if (keyData == (Keys.Control | Keys.N))
+            {
+                Utilities.NightMode.Toggle(this);
+                return true;
+            }
+
             if (keyData == Keys.F12)
             {
                 MenuConnect_Click(null, null);
@@ -4186,11 +4276,17 @@ namespace MissionPlanner
                 return true;
             }
 
-            /*if (keyData == (Keys.Control | Keys.S)) // screenshot
+            if (keyData == Keys.PrintScreen)
             {
-                ScreenShot();
-                return true;
-            }*/
+                // Map screenshot for active FlightData view
+                var fd = MyView.current as GCSViews.FlightData;
+                if (fd != null)
+                {
+                    Utilities.MapScreenshot.CaptureAndShow(GCSViews.FlightData.mymap);
+                    return true;
+                }
+            }
+
             if (keyData == (Keys.Control | Keys.P))
             {
                 new PluginUI().Show();

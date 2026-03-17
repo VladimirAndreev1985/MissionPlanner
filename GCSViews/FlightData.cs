@@ -927,6 +927,12 @@ namespace MissionPlanner.GCSViews
                 return true;
             }
 
+            if (keyData == Keys.PrintScreen)
+            {
+                Utilities.MapScreenshot.CaptureAndShow(gMapControl1);
+                return true;
+            }
+
             if (keyData == (Keys.Space))
             {
                 if (MainV2.comPort.logplaybackfile != null)
@@ -3685,6 +3691,73 @@ namespace MissionPlanner.GCSViews
 
                     // update vario info
                     Vario.SetValue(MainV2.comPort.MAV.cs.climbrate);
+
+                    // --- GPS spoofing detection & signal quality monitoring ---
+                    // MONITORING ONLY — no commands sent to drone
+                    try
+                    {
+                        var _cs = MainV2.comPort.MAV.cs;
+
+                        // GPS spoofing check
+                        bool gpsAlert = GPSMonitor.Update(
+                            _cs.lat, _cs.lng,
+                            _cs.groundspeed,
+                            (int)_cs.satcount,
+                            _cs.gpshdop,
+                            (int)_cs.gpsstatus);
+
+                        if (gpsAlert)
+                        {
+                            // Audio alert — beep only, no flight commands
+                            VoiceAlerts.AlertGPSSpoofing();
+
+                            // Log the alert
+                            log.Warn("GPSMonitor: " + GPSMonitor.AlertMessage);
+                        }
+
+                        // Signal quality monitoring
+                        SignalMonitor.Update(
+                            (int)_cs.rssi,
+                            (int)_cs.remrssi,
+                            _cs.connected);
+
+                        if (SignalMonitor.CurrentState == SignalMonitor.SignalState.Critical ||
+                            SignalMonitor.CurrentState == SignalMonitor.SignalState.Lost)
+                        {
+                            VoiceAlerts.AlertSignalLost();
+
+                            log.Warn("SignalMonitor: " + SignalMonitor.StatusText);
+                        }
+
+                        // Point of No Return — battery vs distance check
+                        // MONITORING ONLY — no commands sent to drone
+                        double battCapacity = 0;
+                        if (MainV2.comPort.MAV.param.ContainsKey("BATT_CAPACITY"))
+                            battCapacity = MainV2.comPort.MAV.param["BATT_CAPACITY"].Value;
+
+                        PointOfNoReturn.Update(
+                            _cs.DistToHome,
+                            _cs.groundspeed,
+                            _cs.battery_remaining,
+                            _cs.current,
+                            battCapacity);
+
+                        if (PointOfNoReturn.CurrentState == PointOfNoReturn.ReturnState.Critical)
+                        {
+                            VoiceAlerts.AlertPointOfNoReturn();
+                            log.Warn("PointOfNoReturn: " + PointOfNoReturn.StatusText);
+                        }
+                        else if (PointOfNoReturn.CurrentState == PointOfNoReturn.ReturnState.Warning)
+                        {
+                            VoiceAlerts.AlertBatteryCritical();
+                            log.Warn("PointOfNoReturn: " + PointOfNoReturn.StatusText);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        log.Error("GPSMonitor/SignalMonitor/PointOfNoReturn error", ex);
+                    }
+                    // --- end GPS/Signal/PointOfNoReturn monitoring ---
 
                     // udpate tunning tab
                     if (tunning.AddMilliseconds(75) < DateTime.Now && CB_tuning.Checked)

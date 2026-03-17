@@ -1,6 +1,8 @@
 using GMap.NET.WindowsForms;
+using GeoUtility.GeoSystem;
 using MissionPlanner.Controls;
 using MissionPlanner.Maps;
+using MissionPlanner.MsgBox;
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -206,6 +208,81 @@ namespace MissionPlanner.Utilities
                 };
                 overlay.Markers.Add(marker);
             }
+        }
+
+        /// <summary>
+        /// Export all tactical markers in a text format suitable for radio transmission
+        /// Includes coordinates in MGRS and decimal formats
+        /// </summary>
+        public static string ExportForTransmission()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine($"═══ ТАКТИЧЕСКАЯ ОБСТАНОВКА ═══");
+            sb.AppendLine($"Время: {DateTime.Now:dd.MM.yyyy HH:mm:ss}");
+            sb.AppendLine();
+
+            foreach (var point in Points)
+            {
+                string typeStr = "";
+                switch (point.Type)
+                {
+                    case TacticalType.Friendly: typeStr = "СВОИ"; break;
+                    case TacticalType.Enemy: typeStr = "ПРОТИВНИК"; break;
+                    case TacticalType.Unknown: typeStr = "НЕИЗВЕСТ"; break;
+                    case TacticalType.Objective: typeStr = "ЦЕЛЬ"; break;
+                }
+
+                sb.AppendLine($"[{typeStr}] {point.Label}");
+                sb.AppendLine($"  WGS-84: {point.Position.Lat:F7}, {point.Position.Lng:F7}");
+
+                // MGRS
+                try
+                {
+                    var geo = new Geographic(point.Position.Lng, point.Position.Lat);
+                    var mgrs = (MGRS)geo;
+                    sb.AppendLine($"  MGRS:   {mgrs.ToLongString()}");
+                }
+                catch { }
+
+                // SK-42
+                try
+                {
+                    var sk = SK42.FromWGS84(point.Position.Lat, point.Position.Lng);
+                    sb.AppendLine($"  СК-42:  {sk}");
+                }
+                catch { }
+
+                sb.AppendLine($"  Время:  {point.Timestamp:HH:mm:ss}");
+                sb.AppendLine();
+            }
+
+            sb.AppendLine($"Всего меток: {Points.Count}");
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Export and show dialog + copy to clipboard
+        /// </summary>
+        public static void ExportAndShow()
+        {
+            if (Points.Count == 0)
+            {
+                CustomMessageBox.Show("Нет тактических меток для экспорта.", "Экспорт");
+                return;
+            }
+
+            var text = ExportForTransmission();
+            try { Clipboard.SetText(text); } catch { }
+
+            // Also save to file
+            var filename = $"TacticalExport_{DateTime.Now:yyyyMMdd_HHmmss}.txt";
+            var path = Path.Combine(Settings.GetDataDirectory(), "reports", filename);
+            Directory.CreateDirectory(Path.GetDirectoryName(path));
+            File.WriteAllText(path, text, Encoding.UTF8);
+
+            CustomMessageBox.Show(
+                text + $"\n─────────────────\nСкопировано в буфер.\nСохранено: {path}",
+                "Экспорт тактической обстановки");
         }
 
         public static string GetTypeName(TacticalType type)

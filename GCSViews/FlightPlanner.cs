@@ -5044,6 +5044,47 @@ namespace MissionPlanner.GCSViews
             }
         }
 
+        public void tacticalExportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TacticalMarkers.ExportAndShow();
+        }
+
+        // --- Координатные инструменты ---
+
+        // First point storage for range/bearing measurement
+        private static GMap.NET.PointLatLng? _coordRangeBearingFirstPoint = null;
+
+        public void coordShowAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CoordinateTools.ShowCoordinates(MouseDownStart.Lat, MouseDownStart.Lng);
+        }
+
+        public void coordRangeBearingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_coordRangeBearingFirstPoint == null)
+            {
+                // Store first point
+                _coordRangeBearingFirstPoint = new GMap.NET.PointLatLng(MouseDownStart.Lat, MouseDownStart.Lng);
+                CustomMessageBox.Show(
+                    $"Точка 1 сохранена: {MouseDownStart.Lat:F7}, {MouseDownStart.Lng:F7}\n\n" +
+                    "Теперь укажите вторую точку правым кликом\n" +
+                    "и выберите «Дальность и азимут (2 точки)» снова.",
+                    "Дальность и азимут");
+            }
+            else
+            {
+                // Calculate with second point
+                var p1 = _coordRangeBearingFirstPoint.Value;
+                CoordinateTools.ShowRangeAndBearing(p1.Lat, p1.Lng, MouseDownStart.Lat, MouseDownStart.Lng);
+                _coordRangeBearingFirstPoint = null; // Reset
+            }
+        }
+
+        public void coordOffsetPointToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CoordinateTools.ShowOffsetPoint(MouseDownStart.Lat, MouseDownStart.Lng);
+        }
+
         // --- Mission Presets ---
 
         private void ApplyMissionPreset(PresetType presetType)

@@ -204,6 +204,11 @@ namespace MissionPlanner.GCSViews
             this.tacticalUnknownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tacticalObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tacticalClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tacticalExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.coordToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.coordShowAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.coordRangeBearingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.coordOffsetPointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.missionPresetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presetReconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presetPatrolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -928,6 +933,7 @@ namespace MissionPlanner.GCSViews
             this.fileLoadSaveToolStripMenuItem,
             this.pOIToolStripMenuItem,
             this.tacticalToolStripMenuItem,
+            this.coordToolsToolStripMenuItem,
             this.missionPresetsToolStripMenuItem,
             this.trackerHomeToolStripMenuItem,
             this.modifyAltToolStripMenuItem,
@@ -1392,7 +1398,8 @@ namespace MissionPlanner.GCSViews
             this.tacticalEnemyToolStripMenuItem,
             this.tacticalUnknownToolStripMenuItem,
             this.tacticalObjectiveToolStripMenuItem,
-            this.tacticalClearToolStripMenuItem});
+            this.tacticalClearToolStripMenuItem,
+            this.tacticalExportToolStripMenuItem});
             this.tacticalToolStripMenuItem.Name = "tacticalToolStripMenuItem";
             this.tacticalToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
             this.tacticalToolStripMenuItem.Text = "Тактические метки";
@@ -1431,6 +1438,44 @@ namespace MissionPlanner.GCSViews
             this.tacticalClearToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.tacticalClearToolStripMenuItem.Text = "Очистить все метки";
             this.tacticalClearToolStripMenuItem.Click += new System.EventHandler(this.tacticalClearToolStripMenuItem_Click);
+            //
+            // tacticalExportToolStripMenuItem
+            //
+            this.tacticalExportToolStripMenuItem.Name = "tacticalExportToolStripMenuItem";
+            this.tacticalExportToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.tacticalExportToolStripMenuItem.Text = "Экспорт меток (все форматы)";
+            this.tacticalExportToolStripMenuItem.Click += new System.EventHandler(this.tacticalExportToolStripMenuItem_Click);
+            //
+            // coordToolsToolStripMenuItem
+            //
+            this.coordToolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.coordShowAllToolStripMenuItem,
+            this.coordRangeBearingToolStripMenuItem,
+            this.coordOffsetPointToolStripMenuItem});
+            this.coordToolsToolStripMenuItem.Name = "coordToolsToolStripMenuItem";
+            this.coordToolsToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.coordToolsToolStripMenuItem.Text = "Координатные инструменты";
+            //
+            // coordShowAllToolStripMenuItem
+            //
+            this.coordShowAllToolStripMenuItem.Name = "coordShowAllToolStripMenuItem";
+            this.coordShowAllToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.coordShowAllToolStripMenuItem.Text = "Координаты точки (все форматы)";
+            this.coordShowAllToolStripMenuItem.Click += new System.EventHandler(this.coordShowAllToolStripMenuItem_Click);
+            //
+            // coordRangeBearingToolStripMenuItem
+            //
+            this.coordRangeBearingToolStripMenuItem.Name = "coordRangeBearingToolStripMenuItem";
+            this.coordRangeBearingToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.coordRangeBearingToolStripMenuItem.Text = "Дальность и азимут (2 точки)";
+            this.coordRangeBearingToolStripMenuItem.Click += new System.EventHandler(this.coordRangeBearingToolStripMenuItem_Click);
+            //
+            // coordOffsetPointToolStripMenuItem
+            //
+            this.coordOffsetPointToolStripMenuItem.Name = "coordOffsetPointToolStripMenuItem";
+            this.coordOffsetPointToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.coordOffsetPointToolStripMenuItem.Text = "Вынос точки (азимут + дальность)";
+            this.coordOffsetPointToolStripMenuItem.Click += new System.EventHandler(this.coordOffsetPointToolStripMenuItem_Click);
             //
             // missionPresetsToolStripMenuItem
             //
@@ -1776,6 +1821,11 @@ namespace MissionPlanner.GCSViews
         public ToolStripMenuItem tacticalUnknownToolStripMenuItem;
         public ToolStripMenuItem tacticalObjectiveToolStripMenuItem;
         public ToolStripMenuItem tacticalClearToolStripMenuItem;
+        public ToolStripMenuItem tacticalExportToolStripMenuItem;
+        public ToolStripMenuItem coordToolsToolStripMenuItem;
+        public ToolStripMenuItem coordShowAllToolStripMenuItem;
+        public ToolStripMenuItem coordRangeBearingToolStripMenuItem;
+        public ToolStripMenuItem coordOffsetPointToolStripMenuItem;
         public ToolStripMenuItem missionPresetsToolStripMenuItem;
         public ToolStripMenuItem presetReconToolStripMenuItem;
         public ToolStripMenuItem presetPatrolToolStripMenuItem;
