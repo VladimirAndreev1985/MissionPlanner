@@ -49,6 +49,7 @@ namespace MissionPlanner.GCSViews
         internal static GMapOverlay geofence;
         internal static GMapOverlay photosoverlay;
         internal static GMapOverlay poioverlay = new GMapOverlay("POI");
+        internal static GMapOverlay tacticaloverlay = new GMapOverlay("tactical");
         internal static GMapOverlay cameraBounds;
         internal static GMapOverlay rallypointoverlay;
         internal static GMapOverlay tfrpolygons;
@@ -403,6 +404,8 @@ namespace MissionPlanner.GCSViews
             gMapControl1.Overlays.Add(rallypointoverlay);
 
             gMapControl1.Overlays.Add(poioverlay);
+
+            gMapControl1.Overlays.Add(tacticaloverlay);
 
             float gspeedMax = Settings.Instance.GetFloat("GspeedMAX");
             if (gspeedMax != 0)
@@ -2694,6 +2697,7 @@ namespace MissionPlanner.GCSViews
         private void FlightData_Load(object sender, EventArgs e)
         {
             POI.POIModified += POI_POIModified;
+            TacticalMarkers.Modified += TacticalMarkers_Modified;
 
             if (!Settings.Instance.ContainsKey("ShowNoFly") || Settings.Instance.GetBoolean("ShowNoFly"))
                 NoFly.NoFly.NoFlyEvent += NoFly_NoFlyEvent;
@@ -4466,6 +4470,11 @@ namespace MissionPlanner.GCSViews
         void POI_POIModified(object sender, EventArgs e)
         {
             POI.UpdateOverlay(poioverlay);
+        }
+
+        void TacticalMarkers_Modified(object sender, EventArgs e)
+        {
+            TacticalMarkers.UpdateOverlay(tacticaloverlay);
         }
 
         private void PointCameraCoordsToolStripMenuItem1_Click(object sender, EventArgs e)

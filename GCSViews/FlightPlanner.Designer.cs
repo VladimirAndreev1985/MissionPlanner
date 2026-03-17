@@ -198,6 +198,12 @@ namespace MissionPlanner.GCSViews
             this.poiaddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.poideleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.poieditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tacticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tacticalFriendlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tacticalEnemyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tacticalUnknownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tacticalObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tacticalClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trackerHomeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyAltToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enterUTMCoordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -915,6 +921,7 @@ namespace MissionPlanner.GCSViews
             this.mapToolToolStripMenuItem,
             this.fileLoadSaveToolStripMenuItem,
             this.pOIToolStripMenuItem,
+            this.tacticalToolStripMenuItem,
             this.trackerHomeToolStripMenuItem,
             this.modifyAltToolStripMenuItem,
             this.enterUTMCoordToolStripMenuItem,
@@ -1370,7 +1377,54 @@ namespace MissionPlanner.GCSViews
             this.poieditToolStripMenuItem.Name = "poieditToolStripMenuItem";
             resources.ApplyResources(this.poieditToolStripMenuItem, "poieditToolStripMenuItem");
             this.poieditToolStripMenuItem.Click += new System.EventHandler(this.poieditToolStripMenuItem_Click);
-            // 
+            //
+            // tacticalToolStripMenuItem
+            //
+            this.tacticalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tacticalFriendlyToolStripMenuItem,
+            this.tacticalEnemyToolStripMenuItem,
+            this.tacticalUnknownToolStripMenuItem,
+            this.tacticalObjectiveToolStripMenuItem,
+            this.tacticalClearToolStripMenuItem});
+            this.tacticalToolStripMenuItem.Name = "tacticalToolStripMenuItem";
+            this.tacticalToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.tacticalToolStripMenuItem.Text = "Тактические метки";
+            //
+            // tacticalFriendlyToolStripMenuItem
+            //
+            this.tacticalFriendlyToolStripMenuItem.Name = "tacticalFriendlyToolStripMenuItem";
+            this.tacticalFriendlyToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.tacticalFriendlyToolStripMenuItem.Text = "Добавить свои";
+            this.tacticalFriendlyToolStripMenuItem.Click += new System.EventHandler(this.tacticalFriendlyToolStripMenuItem_Click);
+            //
+            // tacticalEnemyToolStripMenuItem
+            //
+            this.tacticalEnemyToolStripMenuItem.Name = "tacticalEnemyToolStripMenuItem";
+            this.tacticalEnemyToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.tacticalEnemyToolStripMenuItem.Text = "Добавить противника";
+            this.tacticalEnemyToolStripMenuItem.Click += new System.EventHandler(this.tacticalEnemyToolStripMenuItem_Click);
+            //
+            // tacticalUnknownToolStripMenuItem
+            //
+            this.tacticalUnknownToolStripMenuItem.Name = "tacticalUnknownToolStripMenuItem";
+            this.tacticalUnknownToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.tacticalUnknownToolStripMenuItem.Text = "Добавить неизвестного";
+            this.tacticalUnknownToolStripMenuItem.Click += new System.EventHandler(this.tacticalUnknownToolStripMenuItem_Click);
+            //
+            // tacticalObjectiveToolStripMenuItem
+            //
+            this.tacticalObjectiveToolStripMenuItem.Name = "tacticalObjectiveToolStripMenuItem";
+            this.tacticalObjectiveToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.tacticalObjectiveToolStripMenuItem.Text = "Добавить цель";
+            this.tacticalObjectiveToolStripMenuItem.Click += new System.EventHandler(this.tacticalObjectiveToolStripMenuItem_Click);
+            //
+            // tacticalClearToolStripMenuItem
+            //
+            this.tacticalClearToolStripMenuItem.Name = "tacticalClearToolStripMenuItem";
+            this.tacticalClearToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.tacticalClearToolStripMenuItem.Text = "Очистить все метки";
+            this.tacticalClearToolStripMenuItem.Click += new System.EventHandler(this.tacticalClearToolStripMenuItem_Click);
+            //
             // trackerHomeToolStripMenuItem
             // 
             this.trackerHomeToolStripMenuItem.Name = "trackerHomeToolStripMenuItem";
@@ -1662,6 +1716,12 @@ namespace MissionPlanner.GCSViews
         public ToolStripMenuItem poiaddToolStripMenuItem;
         public ToolStripMenuItem poideleteToolStripMenuItem;
         public ToolStripMenuItem poieditToolStripMenuItem;
+        public ToolStripMenuItem tacticalToolStripMenuItem;
+        public ToolStripMenuItem tacticalFriendlyToolStripMenuItem;
+        public ToolStripMenuItem tacticalEnemyToolStripMenuItem;
+        public ToolStripMenuItem tacticalUnknownToolStripMenuItem;
+        public ToolStripMenuItem tacticalObjectiveToolStripMenuItem;
+        public ToolStripMenuItem tacticalClearToolStripMenuItem;
         public ToolStripMenuItem enterUTMCoordToolStripMenuItem;
         public ToolStripMenuItem loadSHPFileToolStripMenuItem;
         public Coords coords1;

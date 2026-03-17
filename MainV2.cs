@@ -721,6 +721,17 @@ namespace MissionPlanner
 
             Utilities.ThemeManager.ApplyThemeTo(this);
 
+            // Экстренное удаление данных — кнопка в главном меню
+            {
+                var panicBtn = new System.Windows.Forms.ToolStripButton();
+                panicBtn.Text = "Экстренное удаление";
+                panicBtn.ForeColor = System.Drawing.Color.OrangeRed;
+                panicBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+                panicBtn.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+                panicBtn.ToolTipText = "Ctrl+Shift+Delete — безвозвратное уничтожение всех данных";
+                panicBtn.Click += PanicWipeMenuItem_Click;
+                MainMenu.Items.Add(panicBtn);
+            }
 
             // define default basestream
             comPort.BaseStream = new SerialPort();
@@ -4057,6 +4068,25 @@ namespace MissionPlanner
             MyView.ShowScreen("Help");
         }
 
+        /// <summary>
+        /// Экстренное уничтожение всех данных (Panic Wipe).
+        /// </summary>
+        private void PanicWipeMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((int)DialogResult.Yes ==
+                CustomMessageBox.Show(
+                    "ВНИМАНИЕ!\n\n" +
+                    "Все данные Mission Planner будут безвозвратно уничтожены:\n" +
+                    "журналы, маршруты, параметры, кэш карт, ключи, конфигурация.\n\n" +
+                    "Восстановление невозможно. Продолжить?",
+                    "Экстренное удаление данных",
+                    MessageBoxButtons.YesNo))
+            {
+                PanicWipe.Execute();
+                CustomMessageBox.Show("Данные уничтожены.", "Экстренное удаление");
+                Close();
+            }
+        }
 
         /// <summary>
         /// keyboard shortcuts override
@@ -4069,6 +4099,12 @@ namespace MissionPlanner
             if (ConfigTerminal.SSHTerminal)
             {
                 return false;
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.Delete))
+            {
+                PanicWipeMenuItem_Click(null, null);
+                return true;
             }
 
             if (keyData == Keys.F12)

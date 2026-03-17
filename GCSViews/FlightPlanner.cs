@@ -83,6 +83,7 @@ namespace MissionPlanner.GCSViews
         public static GMapOverlay airportsoverlay;
         public static GMapOverlay objectsoverlay;
         public static GMapOverlay poioverlay = new GMapOverlay("POI");
+        public static GMapOverlay tacticaloverlay = new GMapOverlay("tactical");
         public static GMapOverlay polygonsoverlay;
         public static GMapOverlay routesoverlay;
         static public Object thisLock = new Object();
@@ -213,6 +214,8 @@ namespace MissionPlanner.GCSViews
             MainMap.Overlays.Add(drawnpolygonsoverlay);
 
             MainMap.Overlays.Add(poioverlay);
+
+            MainMap.Overlays.Add(tacticaloverlay);
 
             prop = new Propagation(MainMap);
 
@@ -3430,6 +3433,7 @@ namespace MissionPlanner.GCSViews
             quickadd = false;
 
             POI.POIModified += POI_POIModified;
+            TacticalMarkers.Modified += TacticalMarkers_Modified;
 
             if (Settings.Instance["WMSserver"] != null)
             {
@@ -5004,6 +5008,40 @@ namespace MissionPlanner.GCSViews
         private void POI_POIModified(object sender, EventArgs e)
         {
             POI.UpdateOverlay(poioverlay);
+        }
+
+        private void TacticalMarkers_Modified(object sender, EventArgs e)
+        {
+            TacticalMarkers.UpdateOverlay(tacticaloverlay);
+        }
+
+        public void tacticalFriendlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TacticalMarkers.AddWithDialog(new PointLatLngAlt(MouseDownStart.Lat, MouseDownStart.Lng), TacticalType.Friendly);
+        }
+
+        public void tacticalEnemyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TacticalMarkers.AddWithDialog(new PointLatLngAlt(MouseDownStart.Lat, MouseDownStart.Lng), TacticalType.Enemy);
+        }
+
+        public void tacticalUnknownToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TacticalMarkers.AddWithDialog(new PointLatLngAlt(MouseDownStart.Lat, MouseDownStart.Lng), TacticalType.Unknown);
+        }
+
+        public void tacticalObjectiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TacticalMarkers.AddWithDialog(new PointLatLngAlt(MouseDownStart.Lat, MouseDownStart.Lng), TacticalType.Objective);
+        }
+
+        public void tacticalClearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CustomMessageBox.Show("Удалить все тактические метки?", "Тактические метки",
+                    MessageBoxButtons.YesNo) == (int)DialogResult.Yes)
+            {
+                TacticalMarkers.Clear();
+            }
         }
 
         public void poiaddToolStripMenuItem_Click(object sender, EventArgs e)
