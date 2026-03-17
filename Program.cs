@@ -324,8 +324,9 @@ namespace MissionPlanner
             }
             else
             {
-                // Default to offline/cache-only mode — no external tile requests out of the box
-                GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.CacheOnly;
+                // Default: download tiles and cache locally.
+                // Switch to CacheOnly in Config > Planner before field deployment.
+                GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache;
             }
             log.Info("Map access mode set to : " + GMap.NET.GMaps.Instance.Mode.ToString());
             Console.WriteLine("Setup GMaps 2");
