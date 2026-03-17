@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MenuSimulation.ToolTipText" xml:space="preserve">
+    <value>Симуляция</value>
+  </data>
+  <data name="MenuFlightPlanner.Text" xml:space="preserve">
+    <value>ПЛАН ПОЛЁТА</value>
+  </data>
+  <data name="MenuHelp.Text" xml:space="preserve">
+    <value>ПОМОЩЬ</value>
+  </data>
+  <data name="connectionListToolStripMenuItem.Text" xml:space="preserve">
+    <value>Список подключений</value>
+  </data>
+  <data name="MenuInitConfig.ToolTipText" xml:space="preserve">
+    <value>Первоначальная настройка оборудования</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Mission Planner</value>
+  </data>
+  <data name="connectionOptionsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Параметры подключения</value>
+  </data>
+  <data name="MenuTerminal.Text" xml:space="preserve">
+    <value>ТЕРМИНАЛ</value>
+  </data>
+  <data name="MenuDonate.Text" xml:space="preserve">
+    <value>ПОЖЕРТВОВАТЬ</value>
+  </data>
+  <data name="readonlyToolStripMenuItem.Text" xml:space="preserve">
+    <value>Только чтение</value>
+  </data>
+  <data name="MenuFlightData.Text" xml:space="preserve">
+    <value>ПОЛЁТНЫЕ ДАННЫЕ</value>
+  </data>
+  <data name="MenuInitConfig.Text" xml:space="preserve">
+    <value>НАЧАЛЬНАЯ НАСТРОЙКА</value>
+  </data>
+  <data name="MenuConnect.Text" xml:space="preserve">
+    <value>ПОДКЛЮЧИТЬ</value>
+  </data>
+  <data name="MenuFlightPlanner.ToolTipText" xml:space="preserve">
+    <value>Планирование полёта и маршрутов</value>
+  </data>
+  <data name="MenuConfigTune.Text" xml:space="preserve">
+    <value>НАСТРОЙКА</value>
+  </data>
+  <data name="MenuFlightData.ToolTipText" xml:space="preserve">
+    <value>Полётные данные и телеметрия</value>
+  </data>
+  <data name="MenuConfigTune.ToolTipText" xml:space="preserve">
+    <value>Настройка параметров</value>
+  </data>
+  <data name="MenuSimulation.Text" xml:space="preserve">
+    <value>СИМУЛЯЦИЯ</value>
+  </data>
+  <data name="MenuHelp.ToolTipText" xml:space="preserve">
+    <value>Справка</value>
+  </data>
+  <data name="MenuTerminal.ToolTipText" xml:space="preserve">
+    <value>Терминал MAVLink</value>
+  </data>
+  <data name="menu.Text" xml:space="preserve">
+    <value>Меню</value>
+  </data>
+  <data name="fullScreenToolStripMenuItem.Text" xml:space="preserve">
+    <value>Полноэкранный режим</value>
+  </data>
+  <data name="autoHideToolStripMenuItem.Text" xml:space="preserve">
+    <value>Автоскрытие</value>
+  </data>
+  <data name="MenuDonate.ToolTipText" xml:space="preserve">
+    <value>Поддержать проект</value>
+  </data>
+</root>
