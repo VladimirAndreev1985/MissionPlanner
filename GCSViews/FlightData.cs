@@ -439,6 +439,21 @@ namespace MissionPlanner.GCSViews
             hud1.distunit = CurrentState.DistanceUnit;
             coords1.AltUnit = CurrentState.AltUnit;
 
+            // apply coordinate system from user settings
+            var coordSysIndex = Settings.Instance.GetInt32("coordsystem", 0);
+            switch (coordSysIndex)
+            {
+                case 1:
+                    coords1.System = Controls.Coords.CoordsSystems.UTM.ToString();
+                    break;
+                case 2:
+                    coords1.System = Controls.Coords.CoordsSystems.MGRS.ToString();
+                    break;
+                default:
+                    coords1.System = Controls.Coords.CoordsSystems.GEO.ToString();
+                    break;
+            }
+
             if (MainV2.MONO)
             {
                 if (!hud1.Visible)

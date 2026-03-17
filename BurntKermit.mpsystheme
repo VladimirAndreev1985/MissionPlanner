@@ -37,6 +37,11 @@
       <strVariableName>ButBGBot</strVariableName>
     </ThemeColor>
     <ThemeColor>
+      <strColorItemName>Button Border</strColorItemName>
+      <clrColor Web="#3C3C3C" />
+      <strVariableName>ButBorder</strVariableName>
+    </ThemeColor>
+    <ThemeColor>
       <strColorItemName>ProgressBar Top</strColorItemName>
       <clrColor Web="#668B1A" />
       <strVariableName>ProgressBarColorTop</strVariableName>
@@ -60,6 +65,11 @@
       <strColorItemName>BannerColor2</strColorItemName>
       <clrColor Web="#94C11F" />
       <strVariableName>BannerColor2</strVariableName>
+    </ThemeColor>
+    <ThemeColor>
+      <strColorItemName>Disabled Button Text</strColorItemName>
+      <clrColor Web="#808080" />
+      <strVariableName>ButtonTextColorNotEnabled</strVariableName>
     </ThemeColor>
     <ThemeColor>
       <strColorItemName>Disabled Button</strColorItemName>

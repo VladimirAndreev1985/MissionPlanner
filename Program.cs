@@ -321,8 +321,13 @@ namespace MissionPlanner
             if (Settings.Instance["mapCache"] != null)
             {
                 GMap.NET.GMaps.Instance.Mode = (GMap.NET.AccessMode)Enum.Parse(typeof(GMap.NET.AccessMode), Settings.Instance["mapCache"].ToString());
-                log.Info("Map access mode set to : " + GMap.NET.GMaps.Instance.Mode.ToString());
             }
+            else
+            {
+                // Default to offline/cache-only mode — no external tile requests out of the box
+                GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.CacheOnly;
+            }
+            log.Info("Map access mode set to : " + GMap.NET.GMaps.Instance.Mode.ToString());
             Console.WriteLine("Setup GMaps 2");
             // add my custom map providers
             GMap.NET.MapProviders.GMapProviders.List.Add(Maps.WMSProvider.Instance);

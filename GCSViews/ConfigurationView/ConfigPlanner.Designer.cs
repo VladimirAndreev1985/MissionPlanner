@@ -102,6 +102,8 @@
             this.chk_shownofly = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.CMB_altunits = new System.Windows.Forms.ComboBox();
+            this.label_coordsystem = new System.Windows.Forms.Label();
+            this.CMB_coordsystem = new System.Windows.Forms.ComboBox();
             this.num_gcsid = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.CHK_params_bg = new System.Windows.Forms.CheckBox();
@@ -719,7 +721,28 @@
             resources.ApplyResources(this.CMB_altunits, "CMB_altunits");
             this.CMB_altunits.Name = "CMB_altunits";
             this.CMB_altunits.SelectedIndexChanged += new System.EventHandler(this.CMB_altunits_SelectedIndexChanged);
-            // 
+            //
+            // label_coordsystem
+            //
+            this.label_coordsystem.AutoSize = true;
+            this.label_coordsystem.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label_coordsystem.Location = new System.Drawing.Point(249, 225);
+            this.label_coordsystem.Name = "label_coordsystem";
+            this.label_coordsystem.Size = new System.Drawing.Size(66, 13);
+            this.label_coordsystem.TabIndex = 121;
+            this.label_coordsystem.Text = "Coord System";
+            resources.ApplyResources(this.label_coordsystem, "label_coordsystem");
+            //
+            // CMB_coordsystem
+            //
+            this.CMB_coordsystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CMB_coordsystem.FormattingEnabled = true;
+            this.CMB_coordsystem.Location = new System.Drawing.Point(320, 222);
+            this.CMB_coordsystem.Name = "CMB_coordsystem";
+            this.CMB_coordsystem.Size = new System.Drawing.Size(138, 21);
+            this.CMB_coordsystem.TabIndex = 122;
+            this.CMB_coordsystem.SelectedIndexChanged += new System.EventHandler(this.CMB_coordsystem_SelectedIndexChanged);
+            //
             // num_gcsid
             // 
             resources.ApplyResources(this.num_gcsid, "num_gcsid");
@@ -906,6 +929,8 @@
             this.Controls.Add(this.num_gcsid);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.CMB_altunits);
+            this.Controls.Add(this.label_coordsystem);
+            this.Controls.Add(this.CMB_coordsystem);
             this.Controls.Add(this.chk_shownofly);
             this.Controls.Add(this.CHK_AutoParamCommit);
             this.Controls.Add(this.label5);
@@ -1094,5 +1119,7 @@
         public System.Windows.Forms.ComboBox CMB_mapCache;
         private Controls.MyButton BUT_mapCacheDir;
         private System.Windows.Forms.CheckBox CHK_rtsresetesp32;
+        private System.Windows.Forms.Label label_coordsystem;
+        private System.Windows.Forms.ComboBox CMB_coordsystem;
     }
 }

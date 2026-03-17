@@ -43,6 +43,10 @@ namespace MissionPlanner.GCSViews.ConfigurationView
             CMB_severity.Items.Add(SeverityLevel.Info);
             CMB_severity.Items.Add(SeverityLevel.Debug);
 
+            CMB_coordsystem.Items.Add("Географические (WGS-84)");
+            CMB_coordsystem.Items.Add("UTM");
+            CMB_coordsystem.Items.Add("MGRS (военная сетка)");
+
             cmb_secondarydisplaystyle.DataSource = Enum.GetNames(typeof(Maps.GMapMarkerBase.InactiveDisplayStyleEnum));
             cmb_secondarydisplaystyle.Text = Settings.Instance.GetString(
                 "GMapMarkerBase_InactiveDisplayStyle",
@@ -212,6 +216,12 @@ namespace MissionPlanner.GCSViews.ConfigurationView
             if (Settings.Instance["altunits"] != null)
                 CMB_altunits.Text = Settings.Instance["altunits"].ToString();
 
+            // load coordinate system setting
+            if (Settings.Instance["coordsystem"] != null)
+                CMB_coordsystem.SelectedIndex = Settings.Instance.GetInt32("coordsystem");
+            else
+                CMB_coordsystem.SelectedIndex = 0; // default to Geographic (WGS-84)
+
             try
             {
                 if (Settings.Instance["video_device"] != null)
@@ -246,7 +256,7 @@ namespace MissionPlanner.GCSViews.ConfigurationView
             CMB_mapCache.DataSource = Enum.GetNames(typeof(GMap.NET.AccessMode));
             try
             {
-                CMB_mapCache.SelectedIndex = CMB_mapCache.Items.IndexOf(Settings.Instance["mapCache"] ?? GMap.NET.GMaps.Instance.Mode.ToString());
+                CMB_mapCache.SelectedIndex = CMB_mapCache.Items.IndexOf(Settings.Instance["mapCache"] ?? GMap.NET.AccessMode.CacheOnly.ToString());
             }
             catch
             {
@@ -1052,6 +1062,13 @@ namespace MissionPlanner.GCSViews.ConfigurationView
                 return;
             Settings.Instance["altunits"] = CMB_altunits.Text;
             MainV2.instance.ChangeUnits();
+        }
+
+        private void CMB_coordsystem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (startup)
+                return;
+            Settings.Instance["coordsystem"] = CMB_coordsystem.SelectedIndex.ToString();
         }
 
         private void num_gcsid_ValueChanged(object sender, EventArgs e)
