@@ -424,8 +424,7 @@ namespace MissionPlanner
                 Settings.Instance["password_protect"] = "True";
                 // prevent wizard
                 Settings.Instance["newuser"] = "11/02/2014";
-                // invalidate update url
-                System.Configuration.ConfigurationManager.AppSettings["UpdateLocationVersion"] = "";
+                // update url is now our fork — no need to invalidate
             }
 
             Console.WriteLine("Setup CleanupFiles");
