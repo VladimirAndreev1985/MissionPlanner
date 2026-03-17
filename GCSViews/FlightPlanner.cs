@@ -5044,6 +5044,95 @@ namespace MissionPlanner.GCSViews
             }
         }
 
+        // --- Mission Presets ---
+
+        private void ApplyMissionPreset(PresetType presetType)
+        {
+            string altStr = TXT_DefaultAlt.Text;
+            if (DialogResult.Cancel == InputBox.Show("Высота", "Высота полёта (м)", ref altStr))
+                return;
+
+            string radiusStr = "200";
+            // QuickReturn doesn't need radius
+            if (presetType != PresetType.QuickReturn)
+            {
+                if (DialogResult.Cancel == InputBox.Show("Радиус", "Радиус / размер области (м)", ref radiusStr))
+                    return;
+            }
+
+            double altitude;
+            if (!double.TryParse(altStr, out altitude))
+            {
+                CustomMessageBox.Show("Неверное значение высоты", "Ошибка");
+                return;
+            }
+
+            double radius;
+            if (!double.TryParse(radiusStr, out radius))
+            {
+                CustomMessageBox.Show("Неверное значение радиуса", "Ошибка");
+                return;
+            }
+
+            var waypoints = MissionPresets.GenerateWaypoints(
+                presetType, MouseDownStart.Lat, MouseDownStart.Lng, altitude, radius);
+
+            if (waypoints.Count == 0)
+                return;
+
+            // Confirm before adding
+            string desc = MissionPresets.GetDescription(presetType);
+            if (CustomMessageBox.Show(
+                    desc + "\n\nДобавить " + waypoints.Count + " точек в миссию?",
+                    MissionPresets.GetName(presetType),
+                    MessageBoxButtons.YesNo) != (int)DialogResult.Yes)
+                return;
+
+            updateUndoBuffer(false);
+            quickadd = true;
+
+            foreach (var wp in waypoints)
+            {
+                MAVLink.MAV_CMD cmd = (MAVLink.MAV_CMD)wp.cmd;
+                // AddCommand params: cmd, p1, p2, p3, p4, x(lng), y(lat), z(alt)
+                AddCommand(cmd, 0, 0, 0, 0, wp.lng, wp.lat, wp.alt);
+            }
+
+            quickadd = false;
+            writeKML();
+
+            CustomMessageBox.Show(
+                MissionPresets.GetName(presetType) + ": добавлено " + waypoints.Count + " точек.",
+                "Пресет миссии");
+        }
+
+        public void presetReconToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyMissionPreset(PresetType.Reconnaissance);
+        }
+
+        public void presetPatrolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyMissionPreset(PresetType.Patrol);
+        }
+
+        public void presetAreaSurveyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyMissionPreset(PresetType.AreaSurvey);
+        }
+
+        public void presetPointObserveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyMissionPreset(PresetType.PointObserve);
+        }
+
+        public void presetQuickReturnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ApplyMissionPreset(PresetType.QuickReturn);
+        }
+
+        // --- End Mission Presets ---
+
         public void poiaddToolStripMenuItem_Click(object sender, EventArgs e)
         {
             POI.POIAdd(MouseDownStart);

@@ -204,6 +204,12 @@ namespace MissionPlanner.GCSViews
             this.tacticalUnknownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tacticalObjectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tacticalClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.missionPresetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.presetReconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.presetPatrolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.presetAreaSurveyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.presetPointObserveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.presetQuickReturnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trackerHomeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyAltToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enterUTMCoordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -922,6 +928,7 @@ namespace MissionPlanner.GCSViews
             this.fileLoadSaveToolStripMenuItem,
             this.pOIToolStripMenuItem,
             this.tacticalToolStripMenuItem,
+            this.missionPresetsToolStripMenuItem,
             this.trackerHomeToolStripMenuItem,
             this.modifyAltToolStripMenuItem,
             this.enterUTMCoordToolStripMenuItem,
@@ -1425,6 +1432,53 @@ namespace MissionPlanner.GCSViews
             this.tacticalClearToolStripMenuItem.Text = "Очистить все метки";
             this.tacticalClearToolStripMenuItem.Click += new System.EventHandler(this.tacticalClearToolStripMenuItem_Click);
             //
+            // missionPresetsToolStripMenuItem
+            //
+            this.missionPresetsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.presetReconToolStripMenuItem,
+            this.presetPatrolToolStripMenuItem,
+            this.presetAreaSurveyToolStripMenuItem,
+            this.presetPointObserveToolStripMenuItem,
+            this.presetQuickReturnToolStripMenuItem});
+            this.missionPresetsToolStripMenuItem.Name = "missionPresetsToolStripMenuItem";
+            this.missionPresetsToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.missionPresetsToolStripMenuItem.Text = "Пресеты миссий";
+            //
+            // presetReconToolStripMenuItem
+            //
+            this.presetReconToolStripMenuItem.Name = "presetReconToolStripMenuItem";
+            this.presetReconToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.presetReconToolStripMenuItem.Text = "Разведка периметра";
+            this.presetReconToolStripMenuItem.Click += new System.EventHandler(this.presetReconToolStripMenuItem_Click);
+            //
+            // presetPatrolToolStripMenuItem
+            //
+            this.presetPatrolToolStripMenuItem.Name = "presetPatrolToolStripMenuItem";
+            this.presetPatrolToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.presetPatrolToolStripMenuItem.Text = "Патрулирование";
+            this.presetPatrolToolStripMenuItem.Click += new System.EventHandler(this.presetPatrolToolStripMenuItem_Click);
+            //
+            // presetAreaSurveyToolStripMenuItem
+            //
+            this.presetAreaSurveyToolStripMenuItem.Name = "presetAreaSurveyToolStripMenuItem";
+            this.presetAreaSurveyToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.presetAreaSurveyToolStripMenuItem.Text = "Обследование области";
+            this.presetAreaSurveyToolStripMenuItem.Click += new System.EventHandler(this.presetAreaSurveyToolStripMenuItem_Click);
+            //
+            // presetPointObserveToolStripMenuItem
+            //
+            this.presetPointObserveToolStripMenuItem.Name = "presetPointObserveToolStripMenuItem";
+            this.presetPointObserveToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.presetPointObserveToolStripMenuItem.Text = "Наблюдение точки";
+            this.presetPointObserveToolStripMenuItem.Click += new System.EventHandler(this.presetPointObserveToolStripMenuItem_Click);
+            //
+            // presetQuickReturnToolStripMenuItem
+            //
+            this.presetQuickReturnToolStripMenuItem.Name = "presetQuickReturnToolStripMenuItem";
+            this.presetQuickReturnToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.presetQuickReturnToolStripMenuItem.Text = "Быстрый возврат (RTL)";
+            this.presetQuickReturnToolStripMenuItem.Click += new System.EventHandler(this.presetQuickReturnToolStripMenuItem_Click);
+            //
             // trackerHomeToolStripMenuItem
             // 
             this.trackerHomeToolStripMenuItem.Name = "trackerHomeToolStripMenuItem";
@@ -1722,6 +1776,12 @@ namespace MissionPlanner.GCSViews
         public ToolStripMenuItem tacticalUnknownToolStripMenuItem;
         public ToolStripMenuItem tacticalObjectiveToolStripMenuItem;
         public ToolStripMenuItem tacticalClearToolStripMenuItem;
+        public ToolStripMenuItem missionPresetsToolStripMenuItem;
+        public ToolStripMenuItem presetReconToolStripMenuItem;
+        public ToolStripMenuItem presetPatrolToolStripMenuItem;
+        public ToolStripMenuItem presetAreaSurveyToolStripMenuItem;
+        public ToolStripMenuItem presetPointObserveToolStripMenuItem;
+        public ToolStripMenuItem presetQuickReturnToolStripMenuItem;
         public ToolStripMenuItem enterUTMCoordToolStripMenuItem;
         public ToolStripMenuItem loadSHPFileToolStripMenuItem;
         public Coords coords1;

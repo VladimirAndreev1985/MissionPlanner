@@ -721,6 +721,8 @@ namespace MissionPlanner
 
             Utilities.ThemeManager.ApplyThemeTo(this);
 
+            Utilities.TabletMode.ApplyToForm(this);
+
             // Экстренное удаление данных — кнопка в главном меню
             {
                 var panicBtn = new System.Windows.Forms.ToolStripButton();

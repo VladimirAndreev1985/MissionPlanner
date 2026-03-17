@@ -94,6 +94,20 @@ namespace MissionPlanner.GCSViews.ConfigurationView
 
             CMB_theme.Text = ThemeManager.thmColor.strThemeName;
 
+            // Tablet mode checkbox — placed below theme controls
+            var chk_tabletmode = new CheckBox();
+            chk_tabletmode.Text = "Режим планшета (крупный UI)";
+            chk_tabletmode.AutoSize = true;
+            chk_tabletmode.Location = new Point(107, 447);
+            chk_tabletmode.Checked = TabletMode.Enabled;
+            chk_tabletmode.CheckedChanged += (s, ev) =>
+            {
+                if (startup) return;
+                TabletMode.Enabled = chk_tabletmode.Checked;
+                CustomMessageBox.Show("Перезапустите Mission Planner для применения режима планшета.");
+            };
+            this.Controls.Add(chk_tabletmode);
+
             num_gcsid.Value = MAVLinkInterface.gcssysid;
 
             // setup severity selection
