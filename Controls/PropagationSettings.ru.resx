@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="chk_ele.Text" xml:space="preserve">
+    <value>Высота</value>
+  </data>
+  <data name="chk_terrain.Text" xml:space="preserve">
+    <value>Рельеф</value>
+  </data>
+  <data name="chk_rf.Text" xml:space="preserve">
+    <value>РЧ-карта</value>
+  </data>
+  <data name="chk_dronedist.Text" xml:space="preserve">
+    <value>Расст. до дрона (ост.)</value>
+  </data>
+  <data name="chk_homedist.Text" xml:space="preserve">
+    <value>Расст. до дома (ост.)</value>
+  </data>
+  <data name="cb_showscale.Text" xml:space="preserve">
+    <value>Показать масштаб</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Фильтр высоты</value>
+  </data>
+  <data name="label91.Text" xml:space="preserve">
+    <value>Высота</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Макс. высота</value>
+  </data>
+  <data name="label89.Text" xml:space="preserve">
+    <value>Зазор [м]</value>
+  </data>
+  <data name="label100.Text" xml:space="preserve">
+    <value>Распространение</value>
+  </data>
+  <data name="label113.Text" xml:space="preserve">
+    <value>Км (ост.)</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Мин. высота</value>
+  </data>
+  <data name="label109.Text" xml:space="preserve">
+    <value>Шаг азимута</value>
+  </data>
+  <data name="label90.Text" xml:space="preserve">
+    <value>Разрешение</value>
+  </data>
+  <data name="label110.Text" xml:space="preserve">
+    <value>Сходимость</value>
+  </data>
+  <data name="label111.Text" xml:space="preserve">
+    <value>Дальность [км]</value>
+  </data>
+  <data name="label112.Text" xml:space="preserve">
+    <value>Высота базы [м]</value>
+  </data>
+  <data name="label114.Text" xml:space="preserve">
+    <value>Допуск</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Наложение на карту</value>
+  </data>
+  <data name="chk_setalt.Text" xml:space="preserve">
+    <value>Фильтр высоты</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Настройки распространения</value>
+  </data>
+</root>
