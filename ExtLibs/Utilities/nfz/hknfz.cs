@@ -66,49 +66,7 @@
 
         public static async System.Threading.Tasks.Task<FeatureCollection> LoadNFZ()
         {
-            var result = await "https://www.cloudflare.com/cdn-cgi/trace".GetStringAsync();
-
-            log.Debug(result);
-
-            if (result.Contains("loc=HK") && show || forceshow)
-            {
-                string url = "https://esua.cad.gov.hk/web/droneMap/api/nfz?apiKey=a04e6ffec803f6c08126423c32316712";
-
-                if (ConfirmNoFly != null && asked == false)
-                {
-                    asked = true;
-                    if (ConfirmNoFly.Invoke())
-                    {
-                        // user has chosen to show it
-                        show = true;
-                        forceshow = true;
-                    }
-                    else 
-                    {
-                        show = false;
-                        return null;
-                    }
-                }
-
-                FeatureCollection nfzinfo;
-
-                if (new FileInfo(filecache).LastWriteTimeUtc.AddHours(12) < DateTime.UtcNow || !File.Exists(filecache))
-                {
-                    nfzinfo = await url.GetJsonAsync<FeatureCollection>();
-                    try
-                    {
-                        File.WriteAllText(filecache, nfzinfo.ToJSON());
-                    }
-                    catch
-                    {
-                    }
-                }
-                else
-                    nfzinfo = JsonConvert.DeserializeObject<FeatureCollection>(File.ReadAllText(filecache));
-
-
-                return nfzinfo;
-            }
+            // Disabled: no external connections in offline-hardened build
             return null;
         }
     }

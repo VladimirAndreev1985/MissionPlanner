@@ -787,84 +787,8 @@ namespace MissionPlanner
 
             log.Info("Th Name " + Thread?.Name);
 
-            var dr =
-                CustomMessageBox.Show("An error has occurred\n" + ex.ToString() + "\n\nReport this Error???",
-                    "Send Error", MessageBoxButtons.YesNo);
-            if ((int) DialogResult.Yes == dr)
-            {
-                try
-                {
-                    string data = "";
-                    foreach (System.Collections.DictionaryEntry de in ex.Data)
-                        data += String.Format("-> {0}: {1}", de.Key, de.Value);
-
-                    string message = "";
-
-                    try
-                    {
-                        Controls.InputBox.Show("Message", "Please enter a message about this error if you can.",
-                            ref message);
-                    }
-                    catch
-                    {
-                    }
-
-                    string processinfo = "";
-
-                    try
-                    {
-                        var result = new Dictionary<int, string[]>();
-
-                        var pid = Process.GetCurrentProcess().Id;
-
-                        using (var dataTarget = DataTarget.AttachToProcess(pid, 5000, AttachFlag.Passive))
-                        {
-                            ClrInfo runtimeInfo = dataTarget.ClrVersions[0];
-                            var runtime = runtimeInfo.CreateRuntime();
-
-                            foreach (var t in runtime.Threads)
-                            {
-                                result.Add(
-                                    t.ManagedThreadId,
-                                    t.StackTrace.Select(f =>
-                                    {
-                                        if (f.Method != null)
-                                        {
-                                            return f.Method.Type.Name + "." + f.Method.Name;
-                                        }
-
-                                        return null;
-                                    }).ToArray()
-                                );
-                            }
-                        }
-
-                        processinfo =
-                            result.ToJSON(Formatting.Indented); //;Process.GetCurrentProcess().Modules.ToJSON();
-                    }
-                    catch
-                    {
-
-                    }
-
-                    string postData = "message=" + Environment.OSVersion.VersionString + " " +
-                                      System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()
-                                      + " " + Application.ProductVersion
-                                      + "\nException " + ex.ToString().Replace('&', ' ').Replace('=', ' ')
-                                      + "\nStack: " + ex.StackTrace.ToString().Replace('&', ' ').Replace('=', ' ')
-                                      + "\nTargetSite " + ex.TargetSite + " " + ex.TargetSite.DeclaringType
-                                      + "\ndata " + data
-                                      + "\nmessage " + message.Replace('&', ' ').Replace('=', ' ')
-                                      + "\n\n" + processinfo;
-                    _ = Download.PostAsync("http://vps.oborne.me/mail.php", postData).ConfigureAwait(false);
-                }
-                catch (Exception exp)
-                {
-                    Console.WriteLine(exp.ToString());
-                    log.Error(exp);
-                    CustomMessageBox.Show("Could not send report! Typically due to lack of internet connection.");
-                }
-            }
+            CustomMessageBox.Show("An error has occurred\n" + ex.ToString(),
+                    "Error", MessageBoxButtons.OK);
         }
 
         static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)

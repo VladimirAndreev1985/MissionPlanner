@@ -20,13 +20,16 @@ namespace MissionPlanner.ArduPilot
 
         public static async Task<UserAlert> GetAlerts()
         {
-            var content = await new HttpClient().GetStringAsync(URL);
-
-            File.WriteAllText(Settings.GetDataDirectory() + "UserAlerts.json", content);
-
-            Instance = JsonConvert.DeserializeObject<UserAlert>(content);
-
-            return Instance;
+            // Disabled: no external connections in offline-hardened build
+            // Load from local cache only if available
+            var localFile = Settings.GetDataDirectory() + "UserAlerts.json";
+            if (File.Exists(localFile))
+            {
+                var content = File.ReadAllText(localFile);
+                Instance = JsonConvert.DeserializeObject<UserAlert>(content);
+                return Instance;
+            }
+            return new UserAlert();
         }
     }
 

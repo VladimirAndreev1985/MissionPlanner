@@ -38,7 +38,8 @@ namespace MissionPlanner.Utilities
 
         }
 
-        public static bool OptOut = false;
+        // Tracking permanently disabled for security-hardened fork
+        public static bool OptOut { get => true; set { } }
 
         static string version = "1";
         static string tid = "UA-43098846-1";
@@ -64,6 +65,7 @@ namespace MissionPlanner.Utilities
 
         public static void AddEvent(string cat, string action, string label, string value)
         {
+            return;
             List<KeyValuePair<string, string>> param = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string, string>("v", version),
@@ -126,6 +128,7 @@ namespace MissionPlanner.Utilities
 
         public static void AddPage(string page, string title)
         {
+            return;
             // check if we are already here
             if (currentscreen == page)
                 return;
@@ -163,6 +166,7 @@ namespace MissionPlanner.Utilities
 
         public static void AddException(Exception ex)
         {
+            return;
             List<KeyValuePair<string, string>> param = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string, string>("v", version),
@@ -224,6 +228,7 @@ namespace MissionPlanner.Utilities
 
         public static void AddFW(string name, string board)
         {
+            return;
             List<KeyValuePair<string, string>> param = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string, string>("v", version),
@@ -259,6 +264,7 @@ namespace MissionPlanner.Utilities
 
         public static void AddTiming(string cat, string name, double timeinms, string label)
         {
+            return;
             List<KeyValuePair<string, string>> param = new List<KeyValuePair<string, string>>
             {
                 new KeyValuePair<string, string>("v", version),
@@ -292,38 +298,8 @@ namespace MissionPlanner.Utilities
 
         static void track(object temp)
         {
-            if (OptOut)
-                return;
-
-            try
-            {
-                var client = new HttpClient();
-                client.DefaultRequestHeaders.Add("User-Agent", productName + " " + productVersion + " (" + Environment.OSVersion.VersionString + ")");
-                client.Timeout = TimeSpan.FromSeconds(30);
-
-                string data = "";
-
-                List<KeyValuePair<string, string>> data1 = (List<KeyValuePair<string, string>>)temp;
-
-                data1.Add(new KeyValuePair<string, string>("cd1", Environment.OSVersion.VersionString));
-                data1.Add(new KeyValuePair<string, string>("cd4", Environment.ProcessorCount.ToString()));
-
-                foreach (KeyValuePair<string, string> item in data1)
-                {
-                    data += "&" + item.Key + "=" + WebUtility.UrlEncode(item.Value);
-                }
-
-                data = data.TrimStart(new char[] {'&'});
-
-                Random random = new Random();
-
-                data += "&z=" + random.Next().ToString(CultureInfo.InvariantCulture);
-
-                log.Debug(data);
-
-                client.PostAsync(secureTrackingEndpoint, new StringContent(data));
-            }
-            catch { }
+            // Tracking permanently disabled — no data is sent
+            return;
         }
     }
 }
