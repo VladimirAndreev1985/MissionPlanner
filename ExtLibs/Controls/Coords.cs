@@ -78,7 +78,8 @@ namespace MissionPlanner.Controls
         {
             GEO,
             UTM,
-            MGRS
+            MGRS,
+            SK42
         }
 
         public Coords()
@@ -156,7 +157,30 @@ namespace MissionPlanner.Controls
                     }
                 }
                 catch { }
-            }  
+            }
+            else if (System == CoordsSystems.SK42.ToString())
+            {
+                try
+                {
+                    if (point.Longitude >= 180 || point.Longitude <= -180)
+                        return;
+
+                    var sk = GeoUtility.GeoSystem.SK42.FromWGS84(point.Latitude, point.Longitude);
+                    string skText = sk.ToString();
+
+                    if (Vertical)
+                    {
+                        e.Graphics.DrawString(skText + "\n" + Alt.ToString("0.00") + AltUnit, this.Font, new SolidBrush(this.ForeColor), text, StringFormat.GenericDefault);
+                        e.Graphics.DrawString(AltSource, this.Font, new SolidBrush(this.ForeColor),
+                            new PointF(CMB_coordsystem.Left, CMB_coordsystem.Bottom + 4), StringFormat.GenericDefault);
+                    }
+                    else
+                    {
+                        e.Graphics.DrawString(skText + "   " + Alt.ToString("0.00") + AltUnit, this.Font, new SolidBrush(this.ForeColor), text, StringFormat.GenericDefault);
+                    }
+                }
+                catch { }
+            }
         }
 
         private void CMB_coordsystem_SelectedIndexChanged(object sender, EventArgs e)

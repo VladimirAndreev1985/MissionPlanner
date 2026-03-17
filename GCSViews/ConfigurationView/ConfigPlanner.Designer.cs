@@ -42,6 +42,7 @@
             this.CHK_speechaltwarning = new System.Windows.Forms.CheckBox();
             this.label108 = new System.Windows.Forms.Label();
             this.CHK_resetapmonconnect = new System.Windows.Forms.CheckBox();
+            this.CHK_encryptlogs = new System.Windows.Forms.CheckBox();
             this.CHK_mavdebug = new System.Windows.Forms.CheckBox();
             this.label107 = new System.Windows.Forms.Label();
             this.CMB_raterc = new System.Windows.Forms.ComboBox();
@@ -244,7 +245,15 @@
             this.CHK_resetapmonconnect.Name = "CHK_resetapmonconnect";
             this.CHK_resetapmonconnect.UseVisualStyleBackColor = true;
             this.CHK_resetapmonconnect.CheckedChanged += new System.EventHandler(this.CHK_resetapmonconnect_CheckedChanged);
-            // 
+            //
+            // CHK_encryptlogs
+            //
+            resources.ApplyResources(this.CHK_encryptlogs, "CHK_encryptlogs");
+            this.CHK_encryptlogs.Name = "CHK_encryptlogs";
+            this.CHK_encryptlogs.Text = "Шифрование логов (AES-256)";
+            this.CHK_encryptlogs.UseVisualStyleBackColor = true;
+            this.CHK_encryptlogs.CheckedChanged += new System.EventHandler(this.CHK_encryptlogs_CheckedChanged);
+            //
             // CHK_mavdebug
             // 
             resources.ApplyResources(this.CHK_mavdebug, "CHK_mavdebug");
@@ -977,6 +986,7 @@
             this.Controls.Add(this.CHK_speechaltwarning);
             this.Controls.Add(this.label108);
             this.Controls.Add(this.CHK_resetapmonconnect);
+            this.Controls.Add(this.CHK_encryptlogs);
             this.Controls.Add(this.CHK_mavdebug);
             this.Controls.Add(this.label107);
             this.Controls.Add(this.CMB_raterc);
@@ -1038,6 +1048,7 @@
         private System.Windows.Forms.CheckBox CHK_speechaltwarning;
         private System.Windows.Forms.Label label108;
         private System.Windows.Forms.CheckBox CHK_resetapmonconnect;
+        private System.Windows.Forms.CheckBox CHK_encryptlogs;
         private System.Windows.Forms.CheckBox CHK_mavdebug;
         private System.Windows.Forms.Label label107;
         private System.Windows.Forms.ComboBox CMB_raterc;

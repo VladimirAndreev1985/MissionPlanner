@@ -733,6 +733,17 @@ namespace MissionPlanner
                 MainMenu.Items.Add(panicBtn);
             }
 
+            // Кнопка отчёта о вылете
+            {
+                var reportBtn = new System.Windows.Forms.ToolStripButton();
+                reportBtn.Text = "Отчёт о вылете";
+                reportBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+                reportBtn.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+                reportBtn.ToolTipText = "Сформировать текстовый отчёт о текущем вылете";
+                reportBtn.Click += FlightReportMenuItem_Click;
+                MainMenu.Items.Add(reportBtn);
+            }
+
             // define default basestream
             comPort.BaseStream = new SerialPort();
             comPort.BaseStream.BaudRate = 57600;
@@ -1627,9 +1638,10 @@ namespace MissionPlanner
                         }
 
                         //open the logs for writing
+                        var tlogStream = File.Open(tlog, FileMode.CreateNew, FileAccess.ReadWrite, FileShare.None);
                         comPort.logfile =
                             new BufferedStream(
-                                File.Open(tlog, FileMode.CreateNew, FileAccess.ReadWrite, FileShare.None));
+                                Utilities.LogEncryption.WrapForWriting(tlogStream));
                         comPort.rawlogfile =
                             new BufferedStream(
                                 File.Open(rlog, FileMode.CreateNew, FileAccess.ReadWrite, FileShare.None));
@@ -4071,6 +4083,32 @@ namespace MissionPlanner
         /// <summary>
         /// Экстренное уничтожение всех данных (Panic Wipe).
         /// </summary>
+        private void FlightReportMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var path = Utilities.FlightReport.SaveReport();
+                var result = CustomMessageBox.Show(
+                    $"Отчёт сохранён:\n{path}\n\nОткрыть файл?",
+                    "Отчёт о вылете",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information);
+                if ((int)DialogResult.Yes == result)
+                {
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                    {
+                        FileName = path,
+                        UseShellExecute = true
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show("Ошибка формирования отчёта:\n" + ex.Message, "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void PanicWipeMenuItem_Click(object sender, EventArgs e)
         {
             if ((int)DialogResult.Yes ==

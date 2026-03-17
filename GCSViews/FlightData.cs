@@ -452,6 +452,9 @@ namespace MissionPlanner.GCSViews
                 case 2:
                     coords1.System = Controls.Coords.CoordsSystems.MGRS.ToString();
                     break;
+                case 3:
+                    coords1.System = Controls.Coords.CoordsSystems.SK42.ToString();
+                    break;
                 default:
                     coords1.System = Controls.Coords.CoordsSystems.GEO.ToString();
                     break;

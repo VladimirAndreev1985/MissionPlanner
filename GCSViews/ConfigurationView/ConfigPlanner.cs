@@ -46,6 +46,7 @@ namespace MissionPlanner.GCSViews.ConfigurationView
             CMB_coordsystem.Items.Add("Географические (WGS-84)");
             CMB_coordsystem.Items.Add("UTM");
             CMB_coordsystem.Items.Add("MGRS (военная сетка)");
+            CMB_coordsystem.Items.Add("СК-42 (Пулково)");
 
             cmb_secondarydisplaystyle.DataSource = Enum.GetNames(typeof(Maps.GMapMarkerBase.InactiveDisplayStyleEnum));
             cmb_secondarydisplaystyle.Text = Settings.Instance.GetString(
@@ -178,6 +179,7 @@ namespace MissionPlanner.GCSViews.ConfigurationView
             // setup other config state
             SetCheckboxFromConfig("CHK_resetapmonconnect", CHK_resetapmonconnect);
             SetCheckboxFromConfig("CHK_rtsresetesp32", CHK_rtsresetesp32);
+            SetCheckboxFromConfig("encrypt_logs", CHK_encryptlogs);
 
             CMB_rateattitude.Text = MainV2.comPort.MAV.cs.rateattitude.ToString();
             CMB_rateposition.Text = MainV2.comPort.MAV.cs.rateposition.ToString();
@@ -657,6 +659,13 @@ namespace MissionPlanner.GCSViews.ConfigurationView
         private void CHK_resetapmonconnect_CheckedChanged(object sender, EventArgs e)
         {
             Settings.Instance[((CheckBox)sender).Name] = ((CheckBox)sender).Checked.ToString();
+        }
+
+        private void CHK_encryptlogs_CheckedChanged(object sender, EventArgs e)
+        {
+            if (startup)
+                return;
+            Utilities.LogEncryption.Enabled = ((CheckBox)sender).Checked;
         }
 
         private void CHK_rtsresetesp32_CheckedChanged(object sender, EventArgs e)
