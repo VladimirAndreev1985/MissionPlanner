@@ -23,7 +23,7 @@ namespace MissionPlanner.Utilities
         {
             if (!Enabled) return baseStream;
 
-            using var aes = Aes.Create();
+            var aes = Aes.Create();
             aes.KeySize = 256;
             aes.GenerateIV();
             var key = GetOrCreateKey();
@@ -45,7 +45,7 @@ namespace MissionPlanner.Utilities
             var iv = new byte[16];
             baseStream.Read(iv, 0, 16);
 
-            using var aes = Aes.Create();
+            var aes = Aes.Create();
             aes.KeySize = 256;
             var key = GetOrCreateKey();
 
@@ -74,9 +74,11 @@ namespace MissionPlanner.Utilities
         /// </summary>
         public static void SetKeyFromPassword(string password)
         {
-            using var sha = SHA256.Create();
-            var key = sha.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-            Settings.Instance[PasswordKey] = Convert.ToBase64String(key);
+            using (var sha = SHA256.Create())
+            {
+                var key = sha.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                Settings.Instance[PasswordKey] = Convert.ToBase64String(key);
+            }
         }
     }
 }

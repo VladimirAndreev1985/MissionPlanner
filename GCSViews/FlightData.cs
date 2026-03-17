@@ -447,16 +447,16 @@ namespace MissionPlanner.GCSViews
             switch (coordSysIndex)
             {
                 case 1:
-                    coords1.System = Controls.Coords.CoordsSystems.UTM.ToString();
+                    coords1.System = Coords.CoordsSystems.UTM.ToString();
                     break;
                 case 2:
-                    coords1.System = Controls.Coords.CoordsSystems.MGRS.ToString();
+                    coords1.System = Coords.CoordsSystems.MGRS.ToString();
                     break;
                 case 3:
-                    coords1.System = Controls.Coords.CoordsSystems.SK42.ToString();
+                    coords1.System = Coords.CoordsSystems.SK42.ToString();
                     break;
                 default:
-                    coords1.System = Controls.Coords.CoordsSystems.GEO.ToString();
+                    coords1.System = Coords.CoordsSystems.GEO.ToString();
                     break;
             }
 

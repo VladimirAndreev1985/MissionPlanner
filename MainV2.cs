@@ -4279,7 +4279,7 @@ namespace MissionPlanner
             if (keyData == Keys.PrintScreen)
             {
                 // Map screenshot for active FlightData view
-                var fd = MyView.current as GCSViews.FlightData;
+                var fd = MyView.current?.Control as GCSViews.FlightData;
                 if (fd != null)
                 {
                     Utilities.MapScreenshot.CaptureAndShow(GCSViews.FlightData.mymap);

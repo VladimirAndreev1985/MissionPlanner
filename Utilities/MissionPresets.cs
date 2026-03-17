@@ -87,7 +87,7 @@ namespace MissionPlanner.Utilities
                         waypoints.Add((lat, lng, altitude, 16));
                     }
                     // Return to first point for cycling
-                    waypoints.Add((waypoints[0].lat, waypoints[0].lng, altitude, 16));
+                    waypoints.Add((waypoints[0].Item1, waypoints[0].Item2, altitude, 16));
                     break;
 
                 case PresetType.AreaSurvey:

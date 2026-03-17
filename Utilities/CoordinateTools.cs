@@ -55,7 +55,7 @@ namespace MissionPlanner.Utilities
             try { Clipboard.SetText(sb.ToString()); } catch { }
 
             // Show dialog
-            CustomMessageBox.Show(sb.ToString(),
+            MissionPlanner.MsgBox.CustomMessageBox.Show(sb.ToString(),
                 "Координаты точки (скопировано в буфер)", MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
@@ -106,7 +106,7 @@ namespace MissionPlanner.Utilities
             sb.AppendLine($"Точка 2: {lat2:F7}, {lng2:F7}");
 
             try { Clipboard.SetText(sb.ToString()); } catch { }
-            CustomMessageBox.Show(sb.ToString(), "Дальность и азимут (скопировано в буфер)");
+            MissionPlanner.MsgBox.CustomMessageBox.Show(sb.ToString(), "Дальность и азимут (скопировано в буфер)");
         }
 
         /// <summary>

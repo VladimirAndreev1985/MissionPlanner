@@ -199,7 +199,7 @@ namespace MissionPlanner.Utilities
 
             foreach (var pt in _points)
             {
-                var marker = new GMapMarkerTactical(pt.Position.Point(), pt.Type)
+                var marker = new GMapMarkerTactical(pt.Position.Point(), (Maps.TacticalMarkerType)(int)pt.Type)
                 {
                     ToolTipMode = MarkerTooltipMode.OnMouseOver,
                     ToolTipText = GetTypeName(pt.Type) + ": " + pt.Label +
@@ -267,7 +267,7 @@ namespace MissionPlanner.Utilities
         {
             if (Points.Count == 0)
             {
-                CustomMessageBox.Show("Нет тактических меток для экспорта.", "Экспорт");
+                MissionPlanner.MsgBox.CustomMessageBox.Show("Нет тактических меток для экспорта.", "Экспорт");
                 return;
             }
 
@@ -280,7 +280,7 @@ namespace MissionPlanner.Utilities
             Directory.CreateDirectory(Path.GetDirectoryName(path));
             File.WriteAllText(path, text, Encoding.UTF8);
 
-            CustomMessageBox.Show(
+            MissionPlanner.MsgBox.CustomMessageBox.Show(
                 text + $"\n─────────────────\nСкопировано в буфер.\nСохранено: {path}",
                 "Экспорт тактической обстановки");
         }

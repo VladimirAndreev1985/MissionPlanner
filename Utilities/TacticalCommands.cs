@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using MissionPlanner.Comms;
+using MissionPlanner.MsgBox;
 
 namespace MissionPlanner.Utilities
 {
@@ -16,7 +17,7 @@ namespace MissionPlanner.Utilities
         /// </summary>
         public static void EmergencyMotorKill()
         {
-            var result = CustomMessageBox.Show(
+            var result = MissionPlanner.MsgBox.CustomMessageBox.Show(
                 "ВНИМАНИЕ! Моторы будут немедленно остановлены.\nБПА упадёт. Продолжить?",
                 "АВАРИЙНАЯ ОСТАНОВКА МОТОРОВ",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -30,7 +31,7 @@ namespace MissionPlanner.Utilities
             }
             catch (Exception ex)
             {
-                CustomMessageBox.Show("Ошибка: " + ex.Message);
+                MissionPlanner.MsgBox.CustomMessageBox.Show("Ошибка: " + ex.Message);
             }
         }
 
@@ -39,7 +40,7 @@ namespace MissionPlanner.Utilities
         /// </summary>
         public static void PayloadRelease(int servoChannel = 9, int pwmValue = 1100)
         {
-            var result = CustomMessageBox.Show(
+            var result = MissionPlanner.MsgBox.CustomMessageBox.Show(
                 $"Сброс груза: канал {servoChannel}, PWM {pwmValue}\nПродолжить?",
                 "Сброс груза",
                 MessageBoxButtons.YesNo);
@@ -57,7 +58,7 @@ namespace MissionPlanner.Utilities
             }
             catch (Exception ex)
             {
-                CustomMessageBox.Show("Ошибка: " + ex.Message);
+                MissionPlanner.MsgBox.CustomMessageBox.Show("Ошибка: " + ex.Message);
             }
         }
 
@@ -76,7 +77,7 @@ namespace MissionPlanner.Utilities
             }
             catch (Exception ex)
             {
-                CustomMessageBox.Show("Ошибка: " + ex.Message);
+                MissionPlanner.MsgBox.CustomMessageBox.Show("Ошибка: " + ex.Message);
             }
         }
     }

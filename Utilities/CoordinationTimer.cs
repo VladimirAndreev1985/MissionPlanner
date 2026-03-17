@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using System.Drawing;
+using MissionPlanner.Controls;
 
 namespace MissionPlanner.Utilities
 {

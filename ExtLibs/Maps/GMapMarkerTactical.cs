@@ -2,19 +2,29 @@ using System;
 using System.Drawing;
 using GMap.NET;
 using GMap.NET.WindowsForms;
-using MissionPlanner.Utilities;
 
 namespace MissionPlanner.Maps
 {
+    /// <summary>
+    /// Tactical marker types (duplicated here to avoid circular dependency with Utilities)
+    /// </summary>
+    public enum TacticalMarkerType
+    {
+        Friendly,   // Свои
+        Enemy,      // Противник
+        Unknown,    // Неизвестный
+        Objective   // Цель/Объект
+    }
+
     [Serializable]
     public class GMapMarkerTactical : GMapMarker
     {
         private const int MarkerSize = 16;
-        private TacticalType tacticalType;
+        private TacticalMarkerType tacticalType;
 
         private static readonly Size SizeSt = new Size(MarkerSize, MarkerSize);
 
-        public GMapMarkerTactical(PointLatLng p, TacticalType type)
+        public GMapMarkerTactical(PointLatLng p, TacticalMarkerType type)
             : base(p)
         {
             tacticalType = type;
@@ -30,7 +40,7 @@ namespace MissionPlanner.Maps
 
             switch (tacticalType)
             {
-                case TacticalType.Friendly:
+                case TacticalMarkerType.Friendly:
                     // Blue filled circle with white border
                     using (var brush = new SolidBrush(Color.RoyalBlue))
                     using (var pen = new Pen(Color.White, 2f))
@@ -40,7 +50,7 @@ namespace MissionPlanner.Maps
                     }
                     break;
 
-                case TacticalType.Enemy:
+                case TacticalMarkerType.Enemy:
                     // Red filled diamond/rhombus
                     var diamond = new Point[]
                     {
@@ -57,7 +67,7 @@ namespace MissionPlanner.Maps
                     }
                     break;
 
-                case TacticalType.Unknown:
+                case TacticalMarkerType.Unknown:
                     // Yellow filled triangle
                     var triangle = new Point[]
                     {
@@ -73,7 +83,7 @@ namespace MissionPlanner.Maps
                     }
                     break;
 
-                case TacticalType.Objective:
+                case TacticalMarkerType.Objective:
                     // Orange crosshair/circle
                     using (var brush = new SolidBrush(Color.FromArgb(128, Color.Orange)))
                     using (var penCircle = new Pen(Color.OrangeRed, 2f))
