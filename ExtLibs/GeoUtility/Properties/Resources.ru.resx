@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DE_ERROR_CONVERTFROM" xml:space="preserve">
+    <value>Преобразование типов между {0} и {1} не допускается.</value>
+  </data>
+  <data name="DE_ERROR_GAUSS_EAST" xml:space="preserve">
+    <value>Значение восточного смещения за пределами системы Гаусса-Крюгера для Германии:
+Геогр. долгота: от 5 до 16 E.</value>
+  </data>
+  <data name="DE_ERROR_GAUSS_NORTH" xml:space="preserve">
+    <value>Значение северного смещения за пределами системы Гаусса-Крюгера для Германии:
+Геогр. широта: от 46 до 55 N.</value>
+  </data>
+  <data name="DE_ERROR_GEO2UTM" xml:space="preserve">
+    <value>Значения за пределами допустимого диапазона в датуме WGS84:
+Долгота: от -180 до +180 E; Широта: от -80 до +84 N.</value>
+  </data>
+  <data name="DE_ERROR_GEO_LATITUDE" xml:space="preserve">
+    <value>Недопустимая широта. Допустимый диапазон: от -80 (южн.) до +84 (сев.)</value>
+  </data>
+  <data name="DE_ERROR_GEO_LONGITUDE" xml:space="preserve">
+    <value>Недопустимая долгота. Допустимый диапазон: от -180 (зап.) до +180 (вост.)</value>
+  </data>
+  <data name="DE_ERROR_GK_OUT_OF_RANGE" xml:space="preserve">
+    <value>Значения за пределами системы Гаусса-Крюгера для Германии:
+Долгота: от 5 до 16 E; Широта: от 46 до 55 N.</value>
+  </data>
+  <data name="DE_ERROR_MAPDIMENSION" xml:space="preserve">
+    <value>Недопустимый внутренний ключ для спутникового снимка.</value>
+  </data>
+  <data name="DE_ERROR_MGRS" xml:space="preserve">
+    <value>Формат строки координат MGRS не распознан или значение за пределами допустимого диапазона.</value>
+  </data>
+  <data name="DE_ERROR_MGRS_EAST" xml:space="preserve">
+    <value>Недопустимое значение East. </value>
+  </data>
+  <data name="DE_ERROR_MGRS_GRID" xml:space="preserve">
+    <value>Недопустимое значение Grid. Оно должно состоять из 2 букв.</value>
+  </data>
+  <data name="DE_ERROR_MGRS_NORTH" xml:space="preserve">
+    <value>Недопустимое значение North.</value>
+  </data>
+  <data name="DE_ERROR_TILE" xml:space="preserve">
+    <value>Недопустимые значения в параметре, производном от MapServiceTileBase.</value>
+  </data>
+  <data name="DE_ERROR_UTM_BAND" xml:space="preserve">
+    <value>Недопустимая полоса. Допустимый диапазон: от C до X (без I и O).</value>
+  </data>
+  <data name="DE_ERROR_UTM_EAST" xml:space="preserve">
+    <value>Недопустимое значение East. Допустимый диапазон: прибл. от 200000 до 800000</value>
+  </data>
+  <data name="DE_ERROR_UTM_NORTH" xml:space="preserve">
+    <value>Недопустимое значение North. Диапазон: прибл. от 0 до 9300000 (север), прибл. от 1100000 до 10000000 (юг)</value>
+  </data>
+  <data name="DE_ERROR_UTM_STRING" xml:space="preserve">
+    <value>Строка UTM не распознана (неизвестный формат).</value>
+  </data>
+  <data name="DE_ERROR_UTM_ZONE" xml:space="preserve">
+    <value>{0}{1} — недопустимая зона UTM.</value>
+  </data>
+  <data name="DE_ERROR_UTM_ZONE2" xml:space="preserve">
+    <value>Недопустимая зона. Допустимый диапазон: от 1 до 60.</value>
+  </data>
+  <data name="DE_GAUSS_LONG_STRING" xml:space="preserve">
+    <value>Восток: {0}; Север: {1}</value>
+  </data>
+  <data name="DE_GAUSS_SHORT_STRING" xml:space="preserve">
+    <value>В: {0}   С: {1}</value>
+  </data>
+  <data name="DE_GEOGRAPHIC_STRING" xml:space="preserve">
+    <value>Долгота: {0}; Широта: {1}</value>
+  </data>
+  <data name="DE_MS_NO_IMAGE" xml:space="preserve">
+    <value>Спутниковый снимок при данном масштабе недоступен.</value>
+  </data>
+  <data name="DE_NO_ERROR_MESSAGE" xml:space="preserve">
+    <value>Подробности об ошибке недоступны.</value>
+  </data>
+  <data name="ERROR_CONVERTFROM" xml:space="preserve">
+    <value>Преобразование типов между {0} и {1} не допускается.</value>
+  </data>
+  <data name="ERROR_GAUSS_EAST" xml:space="preserve">
+    <value>Значение восточного смещения за пределами системы Гаусса-Крюгера для Германии:
+Долгота: от 5 до 16 E.</value>
+  </data>
+  <data name="ERROR_GAUSS_NORTH" xml:space="preserve">
+    <value>Значение северного смещения за пределами системы Гаусса-Крюгера для Германии:
+Широта: от 46 до 55 N.</value>
+  </data>
+  <data name="ERROR_GEO2UTM" xml:space="preserve">
+    <value>Значения за пределами допустимого диапазона UTM:
+Долгота: от -180 до +180 E; Широта: от -80 до +84 N.</value>
+  </data>
+  <data name="ERROR_GEO_LATITUDE" xml:space="preserve">
+    <value>Недопустимая широта. Диапазон: от -80 (юг) до +84 (север)</value>
+  </data>
+  <data name="ERROR_GEO_LONGITUDE" xml:space="preserve">
+    <value>Недопустимая долгота. Диапазон: от -180 (запад) до +180 (восток)</value>
+  </data>
+  <data name="ERROR_GK_OUT_OF_RANGE" xml:space="preserve">
+    <value>Значения за пределами системы Гаусса-Крюгера для Германии:
+Долгота: от 5 до 16 E; Широта: от 46 до 55 N.</value>
+  </data>
+  <data name="ERROR_MAPDIMENSION" xml:space="preserve">
+    <value>Недопустимый внутренний ключ для спутникового снимка.</value>
+  </data>
+  <data name="ERROR_MGRS" xml:space="preserve">
+    <value>Формат строки MGRS не распознан или значение за пределами допустимого диапазона.</value>
+  </data>
+  <data name="ERROR_MGRS_EAST" xml:space="preserve">
+    <value>Недопустимое значение East.</value>
+  </data>
+  <data name="ERROR_MGRS_GRID" xml:space="preserve">
+    <value>Недопустимое значение Grid. Требуется 2 буквы.</value>
+  </data>
+  <data name="ERROR_MGRS_NORTH" xml:space="preserve">
+    <value>Недопустимое значение North.</value>
+  </data>
+  <data name="ERROR_TILE" xml:space="preserve">
+    <value>Объект, производный от MapServiceTileBase, содержит недопустимые значения.</value>
+  </data>
+  <data name="ERROR_UTM_BAND" xml:space="preserve">
+    <value>Недопустимая полоса. Диапазон: от C до X (без I и O).</value>
+  </data>
+  <data name="ERROR_UTM_EAST" xml:space="preserve">
+    <value>Недопустимое значение East. Диапазон: прибл. от 200000 до 800000</value>
+  </data>
+  <data name="ERROR_UTM_NORTH" xml:space="preserve">
+    <value>Недопустимое значение North. Диапазон: прибл. от 0 до 9300000 (север), прибл. от 1100000 до 10000000 (юг)</value>
+  </data>
+  <data name="ERROR_UTM_STRING" xml:space="preserve">
+    <value>Строка UTM не распознана (неизвестный формат).</value>
+  </data>
+  <data name="ERROR_UTM_ZONE" xml:space="preserve">
+    <value>{0}{1} — недопустимая зона UTM.</value>
+  </data>
+  <data name="ERROR_UTM_ZONE2" xml:space="preserve">
+    <value>Недопустимая зона. Диапазон: от 1 до 60.</value>
+  </data>
+  <data name="GAUSS_SHORT_STRING" xml:space="preserve">
+    <value>В {0}   С {1}</value>
+  </data>
+  <data name="GAUSS_LONG_STRING" xml:space="preserve">
+    <value>Восток: {0}; Север: {1}</value>
+  </data>
+  <data name="GEOGRAPHIC_STRING" xml:space="preserve">
+    <value>Долгота: {0}; Широта: {1}</value>
+  </data>
+  <data name="MS_NO_IMAGE" xml:space="preserve">
+    <value>Спутниковый снимок при данном масштабе недоступен.</value>
+  </data>
+  <data name="NO_ERROR_MESSAGE" xml:space="preserve">
+    <value>Подробности об ошибке недоступны.</value>
+  </data>
+</root>

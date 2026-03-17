@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AskToEnableAltitudeAngel" xml:space="preserve">
+    <value>Хотите включить плагин Altitude Angel?
+
+Нажмите «Да», чтобы получить данные Altitude Angel о воздушном пространстве и наземных опасностях непосредственно на картах Mission Planner.
+Это поможет определить, где можно и нельзя летать, и планировать более безопасные полёты. Вам будет предложено войти в учётную запись
+Altitude Angel или зарегистрировать новую, если у вас её нет.
+
+Вы всегда можете открыть настройки плагина, нажав правой кнопкой мыши на карте и выбрав «Настройки Altitude Angel».
+
+Подробности, политика конфиденциальности и условия использования: [link;https://www.altitudeangel.com;www.altitudeangel.com]</value>
+  </data>
+  <data name="ExplicitClickPrefix" xml:space="preserve">
+    <value>Altitude Angel в настоящее время отключён. </value>
+  </data>
+  <data name="AskToEnableCaption" xml:space="preserve">
+    <value>Плагин Altitude Angel</value>
+  </data>
+  <data name="SettingsMenuItemText" xml:space="preserve">
+    <value>Настройки Altitude Angel</value>
+  </data>
+  <data name="SettingsAccountTabText" xml:space="preserve">
+    <value>Учётная запись</value>
+  </data>
+  <data name="SettingsURLDomainSuffixText" xml:space="preserve">
+    <value>Суффикс домена URL</value>
+  </data>
+  <data name="SettingsClientSecretText" xml:space="preserve">
+    <value>Секрет клиента</value>
+  </data>
+  <data name="SettingsClientIDText" xml:space="preserve">
+    <value>Идентификатор клиента</value>
+  </data>
+  <data name="SettingsOverrideClientSettingsText" xml:space="preserve">
+    <value>Переопределить настройки клиента</value>
+  </data>
+  <data name="SettingsWhatIsThisText" xml:space="preserve">
+    <value>Что это?</value>
+  </data>
+  <data name="SettingsEnableFlightReportingText" xml:space="preserve">
+    <value>Включить отчёты о полётах</value>
+  </data>
+  <data name="SettingsSignOutText" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
+  <data name="SettingsSignInText" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="SettingsMapLayersText" xml:space="preserve">
+    <value>Слои карты</value>
+  </data>
+  <data name="SettingsPlanMapText" xml:space="preserve">
+    <value>Карта планирования</value>
+  </data>
+  <data name="SettingsDataMapText" xml:space="preserve">
+    <value>Карта данных</value>
+  </data>
+  <data name="SettingsDefaultLayersText" xml:space="preserve">
+    <value>Слои по умолчанию</value>
+  </data>
+  <data name="SettingsOpacityAdjustText" xml:space="preserve">
+    <value>Настройка прозрачности</value>
+  </data>
+  <data name="SettingsGroundDataText" xml:space="preserve">
+    <value>Наземные данные</value>
+  </data>
+  <data name="SettingsFlightReportingTabText" xml:space="preserve">
+    <value>Отчёты о полётах</value>
+  </data>
+  <data name="SettingsFlightReportDescriptionText" xml:space="preserve">
+    <value>Описание отчёта о полёте</value>
+  </data>
+  <data name="SettingsUseLocalConflictScopeText" xml:space="preserve">
+    <value>Использовать локальную область конфликтов</value>
+  </data>
+  <data name="SettingsSerialNumberText" xml:space="preserve">
+    <value>Серийный номер</value>
+  </data>
+  <data name="SettingsAllowSMSContactText" xml:space="preserve">
+    <value>Разрешить контакт по SMS</value>
+  </data>
+  <data name="SettingsICAOAddressText" xml:space="preserve">
+    <value>Адрес ICAO</value>
+  </data>
+  <data name="SettingsUseExistingFlightPlanIDText" xml:space="preserve">
+    <value>Использовать существующий ID плана полёта</value>
+  </data>
+  <data name="SettingsCommercialFlightText" xml:space="preserve">
+    <value>Коммерческий полёт</value>
+  </data>
+  <data name="SettingsFlightReportDurationText" xml:space="preserve">
+    <value>Длительность отчёта о полёте (мин)</value>
+  </data>
+  <data name="SettingsContactPhoneNumberText" xml:space="preserve">
+    <value>Контактный номер телефона</value>
+  </data>
+  <data name="SettingsFlightReportNameText" xml:space="preserve">
+    <value>Название отчёта о полёте</value>
+  </data>
+  <data name="SettingsAboutTabText" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="SettingsDisableText" xml:space="preserve">
+    <value>Отключить</value>
+  </data>
+  <data name="SettingsEnableText" xml:space="preserve">
+    <value>Включить</value>
+  </data>
+  <data name="SettingsWindowTitleText" xml:space="preserve">
+    <value>Настройки Altitude Angel</value>
+  </data>
+  <data name="PluginAuthor" xml:space="preserve">
+    <value>Altitude Angel</value>
+  </data>
+  <data name="PluginName" xml:space="preserve">
+    <value>Altitude Angel</value>
+  </data>
+  <data name="MissionPlannerAdapterNotifyMessageTitle" xml:space="preserve">
+    <value>Уведомление</value>
+  </data>
+  <data name="MissionPlannerAdapterMessageBoxDefaultCaption" xml:space="preserve">
+    <value>Сообщение</value>
+  </data>
+  <data name="LoginWindowTitleText" xml:space="preserve">
+    <value>Вход в Altitude Angel</value>
+  </data>
+  <data name="WaitWindowTitle" xml:space="preserve">
+    <value>Altitude Angel</value>
+  </data>
+  <data name="MessageCtrlClickPlannerMap" xml:space="preserve">
+    <value>Используйте Ctrl + клик для отображения и скрытия информации Altitude Angel о воздушном пространстве на карте планирования полёта.</value>
+  </data>
+</root>
